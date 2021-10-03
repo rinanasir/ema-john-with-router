@@ -7,7 +7,7 @@ import Rating from 'react-rating';
 const Product = (props) => {
     // console.log(props);
     const { name, img, seller, price, stock, star } = props.product;
-
+    // const cartIcon = <FontAwesomeIcon icon={faShoppingCart} />
     return (
         <div className="product">
             <div>
@@ -26,8 +26,7 @@ const Product = (props) => {
                 <br />
                 <button
                     onClick={() => props.handleAddToCart(props.product)}
-                    className="btn-regular"
-                ><FontAwesomeIcon icon={faShoppingCart} /> add to cart</button>
+                    className="btn-regular"><FontAwesomeIcon icon={faShoppingCart} /> add to cart</button>
             </div>
         </div>
     );
