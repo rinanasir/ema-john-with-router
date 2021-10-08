@@ -6,16 +6,23 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 import { deleteFromDb } from '../../utilities/fakedb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBag, faStore } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router';
 
 const OrderReview = () => {
     const [products, setProducts] = useProducts();
     const [cart, setCart] = useCart(products);
+    const history = useHistory();
+
     const bagIcon = <FontAwesomeIcon icon={faShoppingBag}></FontAwesomeIcon>
 
     const handleRemove = key => {
         const newCart = cart.filter(product => product.key !== key);
         setCart(newCart);
         deleteFromDb(key);
+    }
+
+    const handlePlaceOrder = () => {
+        history.push('/placeorder');
     }
 
     return (
@@ -31,7 +38,7 @@ const OrderReview = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
-                    <button className="btn-regular">{bagIcon} Place Order</button>
+                    <button onClick={handlePlaceOrder} className="btn-regular">{bagIcon} Place Order</button>
                 </Cart>
             </div>
 
