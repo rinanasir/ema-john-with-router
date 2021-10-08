@@ -4,10 +4,13 @@ import useCart from '../../hooks/useCart';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import { deleteFromDb } from '../../utilities/fakedb';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBag, faStore } from '@fortawesome/free-solid-svg-icons';
 
 const OrderReview = () => {
     const [products, setProducts] = useProducts();
     const [cart, setCart] = useCart(products);
+    const bagIcon = <FontAwesomeIcon icon={faShoppingBag}></FontAwesomeIcon>
 
     const handleRemove = key => {
         const newCart = cart.filter(product => product.key !== key);
@@ -28,7 +31,7 @@ const OrderReview = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
-                    <p>Hello World</p>
+                    <button className="btn-regular">{bagIcon} Place Order</button>
                 </Cart>
             </div>
 

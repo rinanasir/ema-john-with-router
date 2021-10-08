@@ -1,4 +1,7 @@
+import { faStore } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
@@ -9,6 +12,7 @@ const Shop = () => {
     const [cart, setCart] = useState([]);
     // products to be rendered on the UI
     const [displayProducts, setDisplayProducts] = useState([]);
+    const reviewStoreIcon = <FontAwesomeIcon icon={faStore}></FontAwesomeIcon>
 
     useEffect(() => {
         // console.log('product API called');
@@ -81,7 +85,11 @@ const Shop = () => {
                     }
                 </div>
                 <div className="cart-container">
-                    <Cart cart={cart}><h1>Hello Shop</h1></Cart>
+                    <Cart cart={cart}>
+                        <Link to="/review">
+                            <button className="btn-regular">{reviewStoreIcon} Review Order</button>
+                        </Link>
+                    </Cart>
                 </div>
             </div>
         </>

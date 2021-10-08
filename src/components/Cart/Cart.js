@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css';
 
 const Cart = (props) => {
-    console.log(props.children);
+    // console.log(props.children);
     const { cart } = props;
     // console.log(cart);
 
@@ -34,24 +34,10 @@ const Cart = (props) => {
         <div>
             <h3>Order Summary </h3>
             <h5>Items Ordered: {totalQuantity}</h5>
-            <table>
-                <tr>
-                    <td>Total:</td>
-                    <td>{total.toFixed(2)}</td>
-                </tr>
-                <tr>
-                    <td>Shipping:</td>
-                    <td>{shipping}</td>
-                </tr>
-                <tr>
-                    <td>Tax:</td>
-                    <td>{tax.toFixed(2)}</td>
-                </tr>
-                <tr>
-                    <td>Grand Total:</td>
-                    <td>{grandTotal.toFixed(2)}</td>
-                </tr>
-            </table>
+            <p>Total: {total.toFixed(2)}</p>
+            <p>Shipping: {shipping}</p>
+            <p>Tax: {tax.toFixed(2)}</p>
+            <p>Grand Total: {grandTotal.toFixed(2)}</p>
             {props.children}
         </div>
     );
