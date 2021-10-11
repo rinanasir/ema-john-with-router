@@ -50,8 +50,20 @@ const Shop = () => {
     }, [products]); //products is the dependency, each time the product changes, every time the savedCart will be called
 
     const handleAddToCart = (product) => {
-        /* creating a new array where previous elements of cart is available and new item is added in the cart */
-        const newCart = [...cart, product];
+        const exists = cart.find(pd => pd.key === product.key);
+        let newCart = [];
+        if (exists) {
+            const rest = cart.filter(pd => pd.key !== product.key);
+            exists.quantity = exists.quantity + 1;
+            newCart = [...rest, product];
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cart, product];
+            /* creating a new array where previous elements of cart is available and new item is added in the cart */
+        }
+
+        // console.log(newCart);
         setCart(newCart);
         // save to local storage (for now)
         addToDb(product.key); // to fakedb.js

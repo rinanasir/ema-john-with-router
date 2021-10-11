@@ -3,9 +3,9 @@ import useProducts from '../../hooks/useProducts';
 import useCart from '../../hooks/useCart';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
-import { deleteFromDb } from '../../utilities/fakedb';
+import { clearTheCart, deleteFromDb } from '../../utilities/fakedb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBag, faStore } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router';
 
 const OrderReview = () => {
@@ -23,6 +23,8 @@ const OrderReview = () => {
 
     const handlePlaceOrder = () => {
         history.push('/placeorder');
+        setCart([]);     // all the items removed from UI
+        clearTheCart();  // clearing the local storage after placing order
     }
 
     return (
